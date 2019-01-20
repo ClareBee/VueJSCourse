@@ -4,6 +4,7 @@
 where `data: { show: true }`
 --
 `v-if`/`v-else` remove/attach elements (& nested elements) from DOM
+`v-else` works on second element if same type to preceding v-if e.g. div/div
 `v-else-if`(Vue >2.1.0)
 ```html
 <div v-if="type === 'A'">
