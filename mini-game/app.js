@@ -1,0 +1,8 @@
+new Vue({
+  data: {
+
+  },
+  methods: {
+
+  }
+})
