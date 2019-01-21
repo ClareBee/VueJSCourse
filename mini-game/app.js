@@ -12,19 +12,13 @@ new Vue({
       this.monsterHealth = 100;
     },
     attack: function(){
-      let min = 3;
-      let max = 10;
-      damage = this.calculateDamage(3, 10);
-      this.monsterHealth -= damage;
+      this.monsterHealth -= this.calculateDamage(3, 10);
       if(this.monsterHealth <= 0){
         alert('You won!');
         this.gameIsRunning = false;
         return;
       }
-      min = 5;
-      max = 12;
-      damage = this.calculateDamage(5, 12);
-      this.playerHealth -= damage;
+      this.playerHealth -= this.calculateDamage(5, 12);
       if(this.playerHealth <= 0){
         alert('The Monster won!');
         this.gameIsRunning = false;
