@@ -11,6 +11,7 @@ new Vue({
       this.gameIsRunning = true;
       this.playerHealth = 100;
       this.monsterHealth = 100;
+      this.turns = [];
     },
     attack: function(){
       this.attackMonster(3, 10);
@@ -22,10 +23,11 @@ new Vue({
     },
     attackMonster: function(min, max){
       let damage = this.calculateDamage(min, max);
+      let hard = damage > 10 ? 'hard' : '';
       this.monsterHealth -= damage;
       this.turns.unshift({
         isPlayer: true,
-        text: `Player hits Monster for ${damage}`
+        text: `Player hits Monster ${hard} for ${damage}`
       })
       if(this.checkWin()){
         return;
