@@ -37,4 +37,40 @@ new Vue({
   components: some-component
 })
 ```
-<some-component> will only be accessible within the myapp div
+- <some-component> will only be accessible within the myapp div
+- `name ` is produced by a function but still accessible by `this.name` in a method
+- methods can be written as functions:
+e.g.
+```javascript
+data: function(){
+  return {
+    status = 'Critical'
+  }
+},
+methods: {
+  changeStatus() {
+    this.status = 'Normal';
+  }
+}
+```
+Component - <template> with html (wrapped in <div> if > 1) & <script> w export default {}
+In `main.js` can import NameOfComponent from `NameOfComponent.vue` (camel case) & register it globally:
+`Vue.component('name-of-component', NameOfComponent)`;
+=> can now be used as a tag e.g. <name-of-component></name-of-component>
+OR can also register things locally = by importing it inside script and adding it to the components section of the options object:
+e.g.
+```html
+<template>
+  <app-server-status v-for="server in 5"></app-server-status>
+</template>
+```
+```javascript
+<script>
+  import ServerStatus from './ServerStatus.vue';
+  export default {
+    components: {
+      'app-server-status': ServerStatus
+    }
+  }
+  </script>
+  ```
