@@ -10,9 +10,9 @@
 </template>
 
 <script>
-  import ServerStatus from './ServerStatus.vue';
-  import ServerContainer from './ServerContainer.vue';
-  import ServerManagement from './ServerManagement.vue';
+  import ServerStatus from './components/ServerStatus.vue';
+  import ServerContainer from './components/ServerContainer.vue';
+  import ServerManagement from './components/ServerManagement.vue';
 
   export default {
     components: {
