@@ -1,5 +1,5 @@
 ### Components
-- reusable elements
+- reusable named Vue instances
 ```html
 <div id="my-app">
   <my-tag-name></my-tag-name>
@@ -74,3 +74,8 @@ e.g.
   }
   </script>
   ```
+Note that VueJS allows for camel case or hyphenated selectors (will map camelCase property name in options object to the hyphenated tag name)
+
+----
+###  Scoping styles
+Add `scoped` to the <style> template (cf shadow DOM) [thanks to data-id- attribute assigned to components]
