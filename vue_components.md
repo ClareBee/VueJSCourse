@@ -110,3 +110,16 @@ props: {
   required: true,
 }
 ```
+or
+```javascript
+props: {
+  name: {
+    type: String
+  }
+}
+```
+### Emitting custom events
+`this.$emit('nameReset', this.name)`
+=> listened to on element via v-on/@ + name of event
+e.g.
+`@nameReset="name = $event"`
