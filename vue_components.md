@@ -123,3 +123,6 @@ props: {
 => listened to on element via v-on/@ + name of event
 e.g.
 `@nameReset="name = $event"`
+Unidirectional data flow => child components communicate via the parent (cf callbacks & props)
+
+### Passing data between sibling components
