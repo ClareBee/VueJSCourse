@@ -24,9 +24,10 @@ Also possible to register events on the event bus in main.js
 export const eventBus = new Vue({
   methods: {
     nameOfFunction(dataToPass){
-      this.$emit('nameofEvent', dataToPass)
+      this.$emit('nameofEvent', dataToPass);
     }
   }
-
 });
 ```
+In components:
+`eventBus.nameOfFunction(this.localVariable)`
