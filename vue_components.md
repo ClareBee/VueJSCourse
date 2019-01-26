@@ -79,3 +79,34 @@ Note that VueJS allows for camel case or hyphenated selectors (will map camelCas
 ----
 ###  Scoping styles
 Add `scoped` to the <style> template (cf shadow DOM) [thanks to data-id- attribute assigned to components]
+----
+### Passing Props
+- data and methods!
+parent template `<parent-element :name="name"></parent-element>`
+parent Vue instance:
+```javascript
+export default {
+  data: function(){
+    return {
+      name: 'Bob'
+    }
+  }
+}
+```
+child template `<p>{{ name }}</p>`
+child Vue instance
+```javascript
+export default {
+  props: ['name']
+}
+```
+### Validating Props
+Make type explicit in the object
+objects/arrays can take default function
+e.g.
+```javascript
+props: {
+  name: [String, Array],
+  required: true,
+}
+```
