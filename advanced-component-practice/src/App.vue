@@ -13,6 +13,14 @@
 <script>
     import Quote from './components/Quote.vue';
     export default {
+      data: function(){
+        return {
+          maxQuotes: 10,
+          quotes: [
+            'just to render sth'
+          ]
+        }
+      },
       components: {
         appQuote: Quote
       }
