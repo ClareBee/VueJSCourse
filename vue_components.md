@@ -125,4 +125,5 @@ e.g.
 `@nameReset="name = $event"`
 Unidirectional data flow => child components communicate via the parent (cf callbacks & props)
 
-### Passing data between sibling components
+`@click.prevent` - prevents default
+`@click.native` - registers click on html but treat it as though it happened on the component

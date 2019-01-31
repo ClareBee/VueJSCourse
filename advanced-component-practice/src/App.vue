@@ -2,6 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
+              <quote-header :quoteCount="quotes.length" :maxQuotes="maxQuotes"></quote-header>
               <!-- listen to the quoteAdded event emitted by NewQuote component  -->
               <new-quote @quoteAdded="newQuote"></new-quote>
               <quote-grid :quotes="quotes" @quoteDeleted="deleteQuote"></quote-grid>
@@ -18,6 +19,7 @@
 <script>
     import QuoteGrid from './components/QuoteGrid.vue';
     import NewQuote from './components/NewQuote.vue';
+    import Header from './components/Header.vue';
     export default {
       data: function(){
         return {
@@ -30,6 +32,9 @@
       methods: {
         // Vue implicitly passes in the data even though line 5 doesn't have params
         newQuote(quote){
+          if(this.quotes.length >= this.maxQuotes){
+            alert('please delete quotations first');
+          }
           this.quotes.push(quote);
         },
         deleteQuote(index){
@@ -38,7 +43,8 @@
       },
       components: {
         quoteGrid: QuoteGrid,
-        newQuote: NewQuote
+        newQuote: NewQuote,
+        quoteHeader: Header
       }
     }
 </script>
