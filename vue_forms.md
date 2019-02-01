@@ -17,3 +17,4 @@ v-model.lazy = only reacts to change event, rather than every keystroke
 - radio buttons - also share same v-model but not as array
 - select = array of options then loop through <option v-for="option in options" :selected="option == 'UK'">{{ option }}</option>
 then bind on the select: <select v-model="selectedPriority">
+- v-model -> under the hood binds the value e.g. v-bind:value & adds the @input listener
