@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+      <app-directive></app-directive>
         <form>
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
@@ -137,6 +138,7 @@
 
 <script>
     import Switch from './Switch.vue';
+    import Directive from './Directive.vue';
     export default {
       data(){
         return {
@@ -160,7 +162,8 @@
         }
       },
       components: {
-        appSwitch: Switch
+        appSwitch: Switch,
+        appDirective: Directive
       }
     }
 </script>
