@@ -55,3 +55,5 @@ export default {
 used as v-local-highlight="'string'"
 
 ### More complex modifiers
+passing in objects instead of strings = accessible e.g. via binding.value.propertyName
+`<div v-demo="{ color: 'white', text: 'hello!' }"></div>`

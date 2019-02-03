@@ -11,6 +11,7 @@
         <h1>Custon Directives</h1>
         <p v-highlight:border.delayed="'pink'">Global directive</p>
         <p v-local-highlight.blink="'yellow'">Local directive</p>
+        <p v-local-complex-highlight.delayed.blink="{mainColour: 'blue', secondColour: 'purple', delay: '1000'}">More complex directive</p>
       </div>
     </div>
   </div>
@@ -31,6 +32,21 @@
                 el.style.backgroundColor = currentColour;
               }, 1000);
             }, 3000);
+          }
+        }
+      },
+      'local-complex-highlight': {
+        bind(el, binding, vnode){
+          if(binding.modifiers['blink']){
+            let mainColour = binding.value.mainColour;
+            let secondColour = binding.value.secondColour;
+            let currentColour = mainColour;
+            setTimeout(()=> {
+              setInterval(() => {
+                currentColour == secondColour ? currentColour = mainColour : currentColour = secondColour;
+                el.style.backgroundColor = currentColour;
+              }, binding.value.delay);
+            }, 1000);
           }
         }
       }
