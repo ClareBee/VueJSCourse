@@ -10,6 +10,8 @@
                   <li v-for="fruit in filteredFruits">{{ fruit }}</li>
                 </ul>
                 <app-list></app-list>
+
+                <app-animation></app-animation>
             </div>
         </div>
     </div>
@@ -17,6 +19,7 @@
 
 <script>
     import List from './List.vue';
+    import AnimationExample from './AnimationExample.vue';
     import { fruitMixin } from './fruitMixin.js';
     export default {
       data(){
@@ -30,7 +33,8 @@
         }
       },
       components: {
-        appList: List
+        appList: List,
+        appAnimation: AnimationExample
       },
       mixins: [fruitMixin]
     }
