@@ -31,3 +31,10 @@ computed: {
   }
 }
 ```
+
+### Mixins
+file e.g. 'myMixin.js' containing export const myMixin = {}
+imported & used in component w `mixins: []`
+- scoped by component (fresh copy each time)
+component is able to overwrite mixin = created last (created() lifecycle hook)
+(Possible to create global w Vue.mixin({}) in main.js)
