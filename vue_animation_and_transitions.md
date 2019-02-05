@@ -6,3 +6,4 @@ e.g. <transition name="fade">
       <!-- html  -->
       </transition>
 => give you .fade-enter/.fade-enter-active/.fade-leave/.fade-leave-active for css
+add type property to transition to tell it which to use - animation/transition (in case of clashing durations)

@@ -6,6 +6,9 @@
     <transition name="fade">
       <div v-if="show" class="alert alert-info">This is some info</div>
     </transition>
+    <transition name="slide" type="animation">
+      <div v-if="show" class="alert alert-info">This is some info</div>
+    </transition>
   </div>
 </template>
 <script>
@@ -28,5 +31,34 @@ export default {
   .fade-leave-active {
     transition: opacity 1s;
     opacity: 0;
+  }
+  .slide-enter {
+    opacity: 0;
+  }
+  .slide-enter-active {
+    /* forwards keeps the animation in its end state  */
+    animation: slide-in 1s ease-out forwards;
+    transition: opacity .5s;
+  }
+  .slide-leave-active {
+    animation: slide-out 1s ease-out forwards;
+    transition: opacity .5s;
+    opacity: 0;
+  }
+  @keyframes slide-in {
+    from {
+      transform: translateY(20px);
+    }
+    to {
+      transform: translateY(0px);
+    }
+  }
+  @keyframes slide-out {
+    from {
+      transform: translateY(0px);
+    }
+    to {
+      transform: translateY(20px);
+    }
   }
 </style>
