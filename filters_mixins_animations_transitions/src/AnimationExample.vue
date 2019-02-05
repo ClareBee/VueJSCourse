@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Animations</h1>
-    <button @click="show = !show" class="btn btn-primary">Show alert</button>
+    <button @click="show = !show; launch = !launch" class="btn btn-primary">Show alert</button>
     <br /><br />
     <transition name="fade">
       <div v-if="show" class="alert alert-info">This is some info</div>
@@ -9,13 +9,20 @@
     <transition name="slide" type="animation">
       <div v-if="show" class="alert alert-info">This is some info</div>
     </transition>
+    <transition
+      enter-active-class="animated bounce"
+      leave-active-class="animated shake"
+      appear>
+      <div v-if="launch" class="alert alert-info">This is some info</div>
+    </transition>
   </div>
 </template>
 <script>
 export default {
   data(){
     return {
-      show: false
+      show: false,
+      launch: true
     }
   }
 }
