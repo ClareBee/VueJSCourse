@@ -1,12 +1,18 @@
 <template>
   <div>
     <h1>Animations</h1>
+    <hr>
+    <select v-model="alertAnimation" class="form-control">
+      <option value="fade">Fade</option>
+      <option value="slide">Slide</option>
+    </select>
+    <br />
     <button @click="show = !show; launch = !launch" class="btn btn-primary">Show alert</button>
     <br /><br />
-    <transition name="fade">
+    <transition :name="alertAnimation">
       <div v-if="show" class="alert alert-info">This is some info</div>
     </transition>
-    <transition name="slide" type="animation">
+    <transition :name="alertAnimation" type="animation">
       <div v-if="show" class="alert alert-info">This is some info</div>
     </transition>
     <transition
@@ -22,7 +28,8 @@ export default {
   data(){
     return {
       show: false,
-      launch: true
+      launch: true,
+      alertAnimation: 'fade'
     }
   }
 }
