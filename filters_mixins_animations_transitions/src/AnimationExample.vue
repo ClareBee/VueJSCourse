@@ -21,6 +21,26 @@
       appear>
       <div v-if="launch" class="alert alert-info">This is some info</div>
     </transition>
+    <transition :name="alertAnimation" mode="out-in">
+      <div v-if="show" key="info" class="alert alert-info">This is some info</div>
+      <div v-else key="warning" class="alert alert-warning">This is a warning</div>
+    </transition>
+    <hr>
+    <button class="btn btn-primary" @click="load = !load">Toggle element</button>
+    <br/></br/>
+    <transition
+      @before-enter="beforeEnter"
+      @enter="enter"
+      @after-enter="afterEnter"
+      @enter-cancelled="enterCancelled"
+
+      @before-leave="beforeLeave"
+      @leave="leave"
+      @after-leave="afterLeave"
+      @leave-cancelled="leaveCancelled"
+      >
+      <div v-if="load" class="loaded"></div>
+    </transition>
   </div>
 </template>
 <script>
@@ -29,12 +49,47 @@ export default {
     return {
       show: false,
       launch: true,
-      alertAnimation: 'fade'
+      alertAnimation: 'fade',
+      load: false
+    }
+  },
+  methods: {
+    beforeEnter(el){
+      console.log('before enter');
+    },
+    enter(el, done){
+      console.log(el, 'enter');
+      // marks completion
+      done();
+    },
+    afterEnter(el){
+      console.log('after enter');
+    },
+    enterCancelled(el){
+      console.log('enter cancelled');
+    },
+    beforeLeave(el){
+      console.log('before leave');
+    },
+    leave(el, done){
+      console.log('leave', el);
+      done();
+    },
+    afterLeave(el){
+      console.log('after leave');
+    },
+    leaveCancelled(el){
+      console.log('leave cancelled');
     }
   }
 }
 </script>
 <style>
+  .loaded {
+    width: 100px;
+    height: 100px;
+    background-color: lightgreen;
+  }
   .fade-enter {
     opacity: 0;
   }
@@ -52,11 +107,11 @@ export default {
   .slide-enter-active {
     /* forwards keeps the animation in its end state  */
     animation: slide-in 1s ease-out forwards;
-    transition: opacity .5s;
+    transition: opacity 1s;
   }
   .slide-leave-active {
     animation: slide-out 1s ease-out forwards;
-    transition: opacity .5s;
+    transition: opacity 1s;
     opacity: 0;
   }
   @keyframes slide-in {
