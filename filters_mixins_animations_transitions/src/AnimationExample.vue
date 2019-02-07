@@ -41,9 +41,27 @@
       >
       <div v-if="load" class="loaded"></div>
     </transition>
+    <hr >
+    <button class="btn btn-primary" @click="selectedComponent == 'success-alert' ? selectedComponent = 'danger-alert' : selectedComponent = 'success-alert' ">Switch Dynamic Component</button>
+    <br><br>
+    <transition name="fade" mode="out-in">
+      <component :is="selectedComponent"></component>
+    </transition>
+    <hr>
+    <button class="btn btn-primary" @click="addItem">Add Item</button>
+    <br><br>
+    <ul class="list-group">
+      <li
+        v-for="(number, index) in numbers"
+        class="list-group-item"
+        @click="removeItem(index)"
+        style="cursor: pointer">{{ number }}</li>
+    </ul>
   </div>
 </template>
 <script>
+import DangerAlert from './DangerAlert.vue';
+import SuccessAlert from './SuccessAlert.vue';
 export default {
   data(){
     return {
@@ -51,10 +69,23 @@ export default {
       launch: true,
       alertAnimation: 'fade',
       load: false,
-      elementWidth: 100
+      elementWidth: 100,
+      selectedComponent: 'success-alert',
+      numbers: [1, 2, 3, 4]
     }
   },
+  components: {
+    dangerAlert: DangerAlert,
+    successAlert: SuccessAlert
+  },
   methods: {
+    addItem(){
+      const position = Math.floor(Math.random() * this.numbers.length);
+      this.numbers.splice(position, 0, this.numbers.length + 1);
+    },
+    removeItem(index){
+      this.numbers.splice(index, 1);
+    },
     beforeEnter(el){
       console.log('before enter');
       this.elementWidth = 100;
