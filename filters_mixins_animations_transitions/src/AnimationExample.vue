@@ -50,17 +50,27 @@ export default {
       show: false,
       launch: true,
       alertAnimation: 'fade',
-      load: false
+      load: false,
+      elementWidth: 100
     }
   },
   methods: {
     beforeEnter(el){
       console.log('before enter');
+      this.elementWidth = 100;
+      el.style.width = this.elementWidth + 'px';
     },
     enter(el, done){
       console.log(el, 'enter');
-      // marks completion
-      done();
+      let round = 1;
+      const interval = setInterval(() => {
+        el.style.width = (this.elementWidth + round * 10) + 'px';
+        round++;
+        if(round > 20){
+          clearInterval(interval);
+          done();
+        }
+      }, 20);
     },
     afterEnter(el){
       console.log('after enter');
@@ -70,10 +80,20 @@ export default {
     },
     beforeLeave(el){
       console.log('before leave');
+      this.elementWidth = 300;
+      el.style.width = this.elementWidth + 'px';
     },
     leave(el, done){
       console.log('leave', el);
-      done();
+      let round = 1;
+      const interval = setInterval(() => {
+        el.style.width = (this.elementWidth - round * 10) + 'px';
+        round++;
+        if(round > 20){
+          clearInterval(interval);
+          done();
+        }
+      }, 20);
     },
     afterLeave(el){
       console.log('after leave');
@@ -86,7 +106,7 @@ export default {
 </script>
 <style>
   .loaded {
-    width: 100px;
+    width: 300px;
     height: 100px;
     background-color: lightgreen;
   }

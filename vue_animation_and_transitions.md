@@ -20,3 +20,5 @@ if more than one element in a transition, add a unique key attribute to each ele
 => can be mixed w css
 e.g. on transition @enter="enter" where enter is a method that takes (el, done)
 - done() tells Vue that the animation is complete
+- :css="false" on the transition tells Vue not check for animation in css but to rely on JS methods
+- animate in enter() and leave()
