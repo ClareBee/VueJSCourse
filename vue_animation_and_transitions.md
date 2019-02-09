@@ -22,3 +22,9 @@ e.g. on transition @enter="enter" where enter is a method that takes (el, done)
 - done() tells Vue that the animation is complete
 - :css="false" on the transition tells Vue not check for animation in css but to rely on JS methods
 - animate in enter() and leave()
+
+### transition groups
+e.g. for animation lists
+<transition-group> actually renders a html tag (span by default, overwritable by setting a tag="")
+- needs unique key
+- can be animated w .slide-move class
