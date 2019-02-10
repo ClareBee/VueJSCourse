@@ -9,6 +9,19 @@
 <body>
 <div id="app">
 </div>
+<script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: process.env.DB,
+    authDomain: `${process.env.PROJ_ID}.firebaseapp.com`,
+    databaseURL: process.env.DB_URL,
+    projectId: process.env.PROJ_ID,
+    storageBucket: `${process.env.PROJ_ID}.appspot.com`,
+    messagingSenderId: "382740058257"
+  };
+  firebase.initializeApp(config);
+</script>
 <script src="/dist/build.js"></script>
 </body>
 </html>
