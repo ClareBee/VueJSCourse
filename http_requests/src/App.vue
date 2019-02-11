@@ -30,24 +30,25 @@
             username: '',
             email: ''
           },
-          users: []
+          users: [],
+          resource: ''
         }
       },
       methods: {
         submit(){
-          const url = "https://vue-example-3d671.firebaseio.com/data.json"
-          console.log(this.user)
-          this.$http.post(url, this.user)
-            .then(response => {
-              console.log(response)
-            })
-            .catch(err => {
-              console.log(err)
-            })
+          // this.$http.post('data.json', this.user)
+          //   .then(response => {
+          //     console.log(response)
+          //   })
+          //   .catch(err => {
+          //     console.log(err)
+          //   })
+          // alternative syntax using resource configured in created()
+          console.log(this.resource)
+          this.resource.save({}, this.user);
         },
         getData(){
-          const url = "https://vue-example-3d671.firebaseio.com/data.json"
-          this.$http.get(url)
+          this.$http.get('data.json')
             .then(response => {
               return response.json()
             })
@@ -64,6 +65,9 @@
               console.log(err)
             })
         }
+      },
+      created(){
+        this.resource = this.$resource('data.json');
       }
     }
 </script>
