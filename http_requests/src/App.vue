@@ -45,7 +45,8 @@
           //   })
           // alternative syntax using resource configured in created()
           console.log(this.resource)
-          this.resource.save({}, this.user);
+          // this.resource.save({}, this.user);
+          this.resource.saveAlternative(this.user);
         },
         getData(){
           this.$http.get('data.json')
@@ -66,8 +67,11 @@
             })
         }
       },
-      created(){
-        this.resource = this.$resource('data.json');
+      created() {
+        const customActions = {
+          saveAlternative: { method: 'POST', url: 'alternative.json'}
+        }
+        this.resource = this.$resource('data.json', {}, customActions);
       }
     }
 </script>
