@@ -13,6 +13,7 @@
                 </div>
                 <button @click="submit" class="btn btn-primary">Submit</button>
                 <hr >
+                <input type="text" class="form-control" v-model="node">
                 <button @click="getData" class="btn btn-primary">Get Data</button>
                 <ul class="list-group">
                   <li class="list-group-item" v-for="u in users">{{ u.email }}</li>
@@ -31,7 +32,8 @@
             email: ''
           },
           users: [],
-          resource: ''
+          resource: '',
+          node: 'data'
         }
       },
       methods: {
@@ -49,29 +51,47 @@
           this.resource.saveAlternative(this.user);
         },
         getData(){
-          this.$http.get('data.json')
-            .then(response => {
-              return response.json()
-            })
-            .then(data => {
-              console.log('data', data)
-              const resultArray = [];
-              for(let key in data){
-                resultArray.push(data[key]);
-              }
-              console.log(resultArray)
-              this.users = resultArray;
-            })
-            .catch(err => {
-              console.log(err)
-            })
+          // this.$http.get('data.json')
+            // .then(response => {
+            //   return response.json()
+            // })
+            // .then(data => {
+            //   console.log('data', data)
+            //   const resultArray = [];
+            //   for(let key in data){
+            //     resultArray.push(data[key]);
+            //   }
+            //   console.log(resultArray)
+            //   this.users = resultArray;
+            // })
+            // .catch(err => {
+            //   console.log(err)
+            // })
+        // }
+        this.resource.getData({node: this.node})
+          .then(response => {
+            return response.json()
+          })
+          .then(data => {
+            console.log('data', data)
+            const resultArray = [];
+            for(let key in data){
+              resultArray.push(data[key]);
+            }
+            console.log(resultArray)
+            this.users = resultArray;
+          })
+          .catch(err => {
+            console.log(err)
+          })
         }
       },
       created() {
         const customActions = {
-          saveAlternative: { method: 'POST', url: 'alternative.json'}
+          saveAlternative: { method: 'POST', url: 'alternative.json'},
+          getData: { method: 'GET'}
         }
-        this.resource = this.$resource('data.json', {}, customActions);
+        this.resource = this.$resource('{node}.json', {}, customActions);
       }
     }
 </script>

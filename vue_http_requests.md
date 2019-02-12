@@ -27,3 +27,7 @@ Vue.http.interceptors.push((request, next) => {
 ```
 'resources' = 'common mappings to http requests'
 this.$resource  - see https://github.com/pagekit/vue-resource/blob/develop/docs/resource.md
+
+custom resources in a created() hook
+template urls - https://medialize.github.io/URI.js/uri-template.html
+passing in data to create dynamic uri => `{dataValue}.json`
