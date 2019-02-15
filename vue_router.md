@@ -20,3 +20,7 @@ export const routes = [
   { path: '', component: Home },
   { path: '/user', component: User },
 ];`
+---
+// components
+`<router-view></router-view>`
+home route - default on url to #
