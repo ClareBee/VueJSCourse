@@ -23,4 +23,5 @@ export const routes = [
 ---
 // components
 `<router-view></router-view>`
-home route - default on url to #
+home route - default on url to # (to get rid of this configure server to serve html files)
+`<router-link to="user"></router-link>`
