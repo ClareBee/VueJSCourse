@@ -28,3 +28,10 @@ home route - default on url to # (to get rid of this configure server to serve h
 ---
 // styling routes
 `<router-link tag="li" active-class="active" exact>`
+---
+// via js in script tags
+this.$router.push('/nameofroute') (pushes route onto stack - link to click listener)
+---
+// route params
+e.g. `/user/:id`
+accessible via this.$route.params.id
