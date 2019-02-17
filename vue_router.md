@@ -35,3 +35,11 @@ this.$router.push('/nameofroute') (pushes route onto stack - link to click liste
 // route params
 e.g. `/user/:id`
 accessible via this.$route.params.id
+--
+set up watcher to see if route changes:
+`watch: {
+  '$route'(to, from){
+    this.id = to.params.id
+  }
+}`
+=> no longer needed in vue-router v.2.2 as can bind params to props
