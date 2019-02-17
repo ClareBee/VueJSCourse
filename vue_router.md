@@ -43,3 +43,20 @@ set up watcher to see if route changes:
   }
 }`
 => no longer needed in vue-router v.2.2 as can bind params to props
+---
+nested params:
+`export const routes = [
+  { path: '', component: Home },
+  { path: '/user', component: User, children: [
+    { path: '', component: UserStart },
+    { path: ':id', component: UserDetail },
+    { path: ':id/edit', component: UserEdit, name: 'userEdit' }
+  ] },
+];`
+---
+named routes
+on route = name: 'userEdit'
+on component =     
+`<router-link :to="{ name: 'userEdit', params: { id: $route.params.id }, query: {locale: 'en', q: 100 } }" tag="button" class="btn btn-success">Edit</router-link>`
+---
+query params
