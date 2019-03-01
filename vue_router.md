@@ -59,4 +59,18 @@ on route = name: 'userEdit'
 on component =     
 `<router-link :to="{ name: 'userEdit', params: { id: $route.params.id }, query: {locale: 'en', q: 100 } }" tag="button" class="btn btn-success">Edit</router-link>`
 ---
-query params
+accessing query = $route.query.propertyName
+---
+multiple routes -
+```javascript
+{ path: '/', name: 'home', components: {
+  default: Home,
+  'header-top': Header
+  }}
+```
+---
+redirection:
+`{ path: '/redirect-me', redirect: '/user'}`
+---
+wildcard routes:
+`{ path: '*', redirect: '/'}`
