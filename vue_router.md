@@ -74,3 +74,25 @@ redirection:
 ---
 wildcard routes:
 `{ path: '*', redirect: '/'}`
+--
+passing hash along w params/query
+e.g. `hash: '#hashName'`
+--
+controlling scroll
+in main.js
+scrollBehavior inside router:
+```javascript
+const router = new VueRouter({
+  routes,
+  mode: 'history',
+  scrollBehavior(to, from, savedPosition){
+    if(savedPosition){
+      return savedPosition;
+    }
+    if(to.hash) {
+      return {selector: to.hash};
+    }
+    return {x: 0, y: 0};
+  }
+});
+```
