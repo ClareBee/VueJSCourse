@@ -96,3 +96,15 @@ const router = new VueRouter({
   }
 });
 ```
+---
+guards:
+(gets executed on each router action - i.e. generic checks)
+e.g. `router.beforeEach((to, from, next) => {
+    console.log('global beforeEach');
+    next();
+  })`
+---
+next() - also accepts false (to stay on page), a route e.g. '/user'/object defining the path
+- can also put `beforeEach` onto the route itself
+- or in the component itself as `beforeRouteEnter(to, from, next)` as a lifecycle hook
+- `beforeRouteLeave()` inside the component as lifecycle hook
