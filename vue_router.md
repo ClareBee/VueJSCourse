@@ -108,3 +108,12 @@ next() - also accepts false (to stay on page), a route e.g. '/user'/object defin
 - can also put `beforeEach` onto the route itself
 - or in the component itself as `beforeRouteEnter(to, from, next)` as a lifecycle hook
 - `beforeRouteLeave()` inside the component as lifecycle hook
+---
+// lazy loading webpack-style
+```javascript
+const User = resolve => {
+  require.ensure(['./components/user/User.vue'], () => {
+    resolve(require('./components/user/User.vue'));
+  }, 'optionalGroupName')
+}
+```
