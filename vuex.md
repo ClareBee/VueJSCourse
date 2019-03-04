@@ -14,3 +14,25 @@ export const store = new Vuex.Store({
 ```
 - then register it on the root object in `main.js`
 - use in components - replacing `this.$emit` with `this.$store.store.propertyName`
+--
+'getters' - state passed as an arg automatically by vuex
+also on the store as:
+```javascript
+getters: {
+  doubleCounter: state => {
+    return state.counter * 2;
+  }
+}
+```
+- accessed in components w `this.$store.getters.doubleCounter`;
+also:
+```javascript
+import { mapGetters } from 'vuex';
+
+export default {
+  computed: mapGetters([
+    // vuex automatically created computed properties
+    // or you pass in object, mapping these to new names
+    'doubleCounter', 'stringCounter'
+  ])
+}
