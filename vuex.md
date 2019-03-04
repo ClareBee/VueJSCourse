@@ -36,3 +36,15 @@ export default {
     'doubleCounter', 'stringCounter'
   ])
 }
+---
+Mutations - to change state
+mutations: {
+  increment: state => {
+    state.counter++;
+  }
+}
+
+this.$store.commit('increment')
+```ß
+--
+can map mutations to new names w 'mapMutations'
