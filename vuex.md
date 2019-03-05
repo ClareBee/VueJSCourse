@@ -52,8 +52,9 @@ can map mutations to new names w 'mapMutations'
 on store:
 ```javascript
 actions: {
-  methodName: context => {
-    context.commit('asyncMutationName');
+  methodName: (context, payload) => {
+    context.commit('asyncMutationName', payload);
   }
 }
 ```
+if payload has multiple args, pass in as an object
