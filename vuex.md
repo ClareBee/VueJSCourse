@@ -45,6 +45,15 @@ mutations: {
 }
 
 this.$store.commit('increment')
-```ß
+```
 --
 can map mutations to new names w 'mapMutations'
+--
+on store:
+```javascript
+actions: {
+  methodName: context => {
+    context.commit('asyncMutationName');
+  }
+}
+```
