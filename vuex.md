@@ -58,3 +58,18 @@ actions: {
 }
 ```
 if payload has multiple args, pass in as an object
+---
+Use modules on store to abstract parts of store out - modularise
+---
+file structure:
+e.g. action.js - with export const functions = then import * as actions from './actions.js'
+- same for getters/mutations
+---
+namespacing:
+create a types.js file
+e.g. export const DOUBLE_COUNTER = 'counter/DOUBLE_COUNTER';
+export const CLICK_COUNTER = 'counter/CLICK_COUNTER';
+then:
+import * as types from '../types.js';
+use ES6 dynamic naming (at runtime):
+[types.DOUBLE_COUNTER]: state => etc.
