@@ -7,9 +7,10 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <router-link to="/portfolio" activeClass="active" tag="li"><a>Portfolio</a></router-link>
-        <router-link to="/stocks" activeClass="active" tag="li"><a>Stocks</a></router-link>
+        <router-link class="nav-item" to="/portfolio" activeClass="active" tag="li"><a class="nav-link">Portfolio</a></router-link>
+        <router-link class="nav-item" to="/stocks" activeClass="active" tag="li"><a class="nav-link">Stocks</a></router-link>
       </ul>
+      <ul class="navbar-nav">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Save and Load
@@ -19,6 +20,7 @@
             <a class="dropdown-item" href="#">Load Data</a>
           </div>
         </li>
+      </ul>
     </div>
   </nav>
 </template>
