@@ -1,6 +1,6 @@
 <template>
   <div>
-    <app-stock v-for="stock in stocks"></app-stock>
+    <app-stock v-for="stock in stocks" :stock="stock"></app-stock>
   </div>
 </template>
 <script>
@@ -9,14 +9,10 @@
     components: {
       appStock: Stock
     },
-    data(){
-      return {
-        stocks: [
-          { id: 1, name: 'Google', price: 100},
-          { id: 2, name: 'Amazon', price: 100},
-          { id: 3, name: 'Twitter', price: 100},
-          { id: 4, name: 'Facebook', price: 100}
-        ]
+    computed: {
+      stocks: function() {
+        console.log('store', this.$store)
+        return this.$store.getters.stocks;
       }
     }
   }

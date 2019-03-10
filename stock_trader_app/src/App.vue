@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container-fluid">
       <app-header></app-header>
       <div class="row">
         <div class="col-xs-12">
@@ -14,6 +14,9 @@
     export default {
       components: {
         appHeader: Header
+      },
+      created(){
+        this.$store.dispatch('initStocks');
       }
     }
 </script>
