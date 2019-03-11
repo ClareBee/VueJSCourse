@@ -31,7 +31,7 @@ const actions = {
 }
 
 const getters = {
-  stockPortfolio (state, getters){
+  stocksPortfolio (state, getters){
     return state.stocks.map(stock => {
       const record = getters.stocks.find(element => element.id == stock.id);
       return {
@@ -47,7 +47,7 @@ const getters = {
   }
 }
 
-export default = {
+export default {
   state,
   mutations,
   actions,
