@@ -11,7 +11,8 @@
             type="number"
             class="form-control"
             placeholder="Quantity"
-            v-model="quantity">
+            v-model="quantity"
+            :class="{danger: insufficientFunds}">
           <button
             class="btn btn-success float-right m-2"
             @click="buyStock"
@@ -23,6 +24,11 @@
     </div>
   </div>
 </template>
+<style scoped>
+.danger {
+  border: 1px solid red;
+}
+</style>
 <script>
   export default {
     props: ['stock'],
