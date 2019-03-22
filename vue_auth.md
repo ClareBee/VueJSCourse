@@ -93,4 +93,17 @@ userData from the then block of the sign up post request:
   - can use v-if to show links/logout button if authenticated
   - logout should clear token from state & router.replace('/signIn') to redirect
   - setTimeout to logout when session token expires
-  
+  ___
+  to keep s/o logged in on refresh, need to store token in Local Storage & when it expires
+  ```
+  const now = new Date()
+  const expirationDate = new Date(now.getTime() + res.data.expiresIn * 1000)
+  localStorage.setItem('token', res.data.idToken)
+  localStorage.setItem('userId', this.state.userId)
+  localStorage.setItem('expiration', expirationDate)
+  ```
+retrieve token w localStorage.getItem('token'), check if it's there & that expiration date hasn't passed - then commit & dispatch method
+on logout, need to clear:
+```
+localStorage.removeItem('token')
+```
