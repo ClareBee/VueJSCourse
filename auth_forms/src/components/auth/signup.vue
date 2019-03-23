@@ -51,12 +51,15 @@
             <div
                     class="input"
                     v-for="(hobbyInput, index) in hobbyInputs"
+                    :class="{invalid: $v.hobbyInputs.$each[index].$error}"
+
                     :key="hobbyInput.id">
               <label :for="hobbyInput.id">Hobby #{{ index }}</label>
               <input
                       type="text"
                       :id="hobbyInput.id"
-                      v-model="hobbyInput.value">
+                      v-model="hobbyInput.value"
+                      @blur="$v.hobbyInputs.$each[index].value.$touch()">
               <button @click="onDeleteHobby(hobbyInput.id)" type="button">X</button>
             </div>
           </div>
@@ -114,6 +117,15 @@
         required: requiredUnless(vm => {
           return vm.country === 'germany'
         })
+      },
+      hobbyInputs: {
+        minLen: minLength(2),
+        $each: {
+          value: {
+            required,
+            minLen: minLength(5)
+          }
+        }
       }
     },
     methods: {
