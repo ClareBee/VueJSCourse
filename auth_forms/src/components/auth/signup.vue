@@ -10,12 +10,14 @@
                   v-model="email"
                   @input="$v.email.$touch()">
         </div>
-        <div class="input">
+        <div class="input" :class="{invalid: $v.age.$error}">
           <label for="age">Your Age</label>
           <input
                   type="number"
                   id="age"
-                  v-model.number="age">
+                  v-model.number="age"
+                  @blur="$v.age.$touch()">
+        <p v-if="!$v.age.minVal">You have to be at least {{ $v.age.$params.minVal.min }} years old.</p>
         </div>
         <div class="input">
           <label for="password">Password</label>
@@ -71,7 +73,7 @@
 
 <script>
   import axios from '../../axios_auth.js';
-  import { required, email } from 'vuelidate/lib/validators';
+  import { required, email, numeric, minValue } from 'vuelidate/lib/validators';
 
   export default {
     data () {
@@ -89,6 +91,11 @@
       email: {
         required,
         email
+      },
+      age: {
+        required,
+        numeric,
+        minVal: minValue(18)
       }
     },
     methods: {
@@ -168,7 +175,7 @@
     color: red;
   }
 
-  .input.invalid {
+  .input.invalid input {
     border: 1px solid red;
     background-color: #ffc9aa;
   }
