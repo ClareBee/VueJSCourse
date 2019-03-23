@@ -60,7 +60,10 @@
                       :id="hobbyInput.id"
                       v-model="hobbyInput.value"
                       @blur="$v.hobbyInputs.$each[index].value.$touch()">
-              <button @click="onDeleteHobby(hobbyInput.id)" type="button">X</button>
+              <button
+                @click="onDeleteHobby(hobbyInput.id)"
+                type="button"
+                :disabled="$v.$invalid">X</button>
             </div>
           </div>
         </div>
@@ -108,7 +111,20 @@
       },
       password: {
         required,
-        minLen: minLength(6)
+        minLen: minLength(6),
+        unique: val => {
+          if(val === '') return true;
+          // return new Promise((resolve, reject) => {
+          //   setTimeout(() => {
+          //   resolve(val !== 'test@test.com')
+          // }, 1000)
+          // })
+          return axios.get('/users.json?orderBy="email"&equalTo="' + val + '"')
+            .then(res => {
+              console.log(res)
+              return Object.keys(res.data).length === 0
+            })
+        }
       },
       confirmPassword: {
         sameAs: sameAs('password')
